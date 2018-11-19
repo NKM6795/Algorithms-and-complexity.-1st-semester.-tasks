@@ -115,6 +115,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CyclicShiftCheck.cpp" />
+    <ClCompile Include="Demonstration.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="zFunction.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CyclicShiftCheck.h" />
+    <ClInclude Include="Demonstration.h" />
+    <ClInclude Include="zFunction.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
