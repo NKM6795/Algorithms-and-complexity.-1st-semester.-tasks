@@ -13,33 +13,33 @@ vector<pair<int, int> > RabinKarp(vector<string> first, vector<string> second)
 		powers[i] = powers[i - 1] * power;
 	}
 
-	vector<vector<long long>> secondHeshes(second.size(), vector<long long>(second.size()));
+	vector<vector<long long>> secondHashes(second.size(), vector<long long>(second.size()));
 	for (int i = 0; i < int(second.size()); ++i)
 	{
-		for (int j = 0; j < int(first.size()); ++j)
+		for (int j = 0; j < int(second.size()); ++j)
 		{
-			secondHeshes[i][j] = (second[i][j] - 'a' + 1) * powers[i * int(first.size()) + j];
+			secondHashes[i][j] = (second[i][j] - 'a' + 1) * powers[i * int(second.size()) + j];
 			if (i != 0)
 			{
-				secondHeshes[i][j] += secondHeshes[i - 1][j];
+				secondHashes[i][j] += secondHashes[i - 1][j];
 			}
 			if (j != 0)
 			{
-				secondHeshes[i][j] += secondHeshes[i][j - 1];
+				secondHashes[i][j] += secondHashes[i][j - 1];
 			}
 			if (i != 0 && j != 0)
 			{
-				secondHeshes[i][j] -= secondHeshes[i - 1][j - 1];
+				secondHashes[i][j] -= secondHashes[i - 1][j - 1];
 			}
 		}
 	}
 
-	long long firstHesh = 0;
+	long long firstHash = 0;
 	for (int i = 0; i < int(first.size()); ++i)
 	{
 		for (int j = 0; j < int(first.size()); ++j)
 		{
-			firstHesh += (first[i][j] - 'a' + 1) * powers[i * int(first.size()) + j];
+			firstHash += (first[i][j] - 'a' + 1) * powers[i * int(second.size()) + j];
 		}
 	}
 
@@ -47,21 +47,21 @@ vector<pair<int, int> > RabinKarp(vector<string> first, vector<string> second)
 	{
 		for (int j = 0; int(first.size()) - 1 + j < int(second.size()); ++j)
 		{
-			long long curHesh = secondHeshes[int(first.size()) - 1 + i][int(first.size()) - 1 + j];
+			long long currentHash = secondHashes[int(first.size()) - 1 + i][int(first.size()) - 1 + j];
 			if (i != 0)
 			{
-				curHesh -= secondHeshes[i - 1][j];
+				currentHash -= secondHashes[i - 1][int(first.size()) - 1 + j];
 			}
 			if (j != 0)
 			{
-				curHesh -= secondHeshes[i][j - 1];
+				currentHash -= secondHashes[int(first.size()) - 1 + i][j - 1];
 			}
 			if (i != 0 && j != 0)
 			{
-				curHesh += secondHeshes[i - 1][j - 1];
+				currentHash += secondHashes[i - 1][j - 1];
 			}
-
-			if (curHesh == firstHesh * powers[i * int(first.size()) + j])
+			
+			if (currentHash == firstHash * powers[i * int(second.size()) + j])
 			{
 				result.push_back({ i, j });
 			}
