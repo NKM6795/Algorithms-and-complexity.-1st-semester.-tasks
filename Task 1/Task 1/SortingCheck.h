@@ -4,4 +4,4 @@
 #include "Sort.h"
 
 
-bool sortingCheck(vector<int> &first, vector<int> &second);
+bool sortingCheck(string first, string second);

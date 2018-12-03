@@ -8,31 +8,16 @@ void checkerForUser()
 	int number;
 	cin >> number;
 
-	vector<int> first, second;
+	string first, second;
+	getline(cin, first);
 
 	for (int i = 0; i < number; ++i)
 	{
-		int countOfElement;
-		cout << "Please enter count of element\n";
-		cin >> countOfElement;
-		
-		first.clear();
-		first.resize(countOfElement);
+		cout << "Please enter first file\n";
+		getline(cin, first);
 
-		cout << "Please enter first array\n";
-		for (int j = 0; j < countOfElement; ++j)
-		{
-			cin >> first[j];
-		}
-
-		second.clear();
-		second.resize(countOfElement);
-		
-		cout << "Please enter second array\n";
-		for (int j = 0; j < countOfElement; ++j)
-		{
-			cin >> second[j];
-		}
+		cout << "Please enter second file\n";
+		getline(cin, second);
 
 		cout << "Result:\n" << sortingCheck(first, second) << '\n';
 	}
@@ -41,37 +26,19 @@ void checkerForUser()
 
 void checkerForDemonstration()
 {
-	for (int i = 6; i < 50; ++i)
-	{
-		vector<int> first, second;
-		for (int j = 0; j < i; ++j)
-		{
-			first.push_back(j);
-		}
+	string first = "test.dat", second = "result.dat";
+	
+	cout << "First file: " << first << '\n';
+	cout << "Second file: " << second << '\n';
+	cout << "Expected result: " << 1 << '\n';
+	cout << "Result: " << sortingCheck(first, second) << '\n';
 
-		second = first;
-		random_shuffle(first.begin(), first.end());
-
-		cout << "First array:\n";
-		for (int j = 0; j < i; ++j)
-		{
-			cout << first[j] << ' ';
-		}
-		cout << "\nSecond array:\n";
-		for (int j = 0; j < i; ++j)
-		{
-			cout <<second[j] << ' ';
-		}
-		cout << "\nResult: " << sortingCheck(first, second) << '\n';
-	}
 	cin.get();
 	cin.get();
 }
 
 void demonstration()
 {
-	vector<int> first = { 7, 6, 8, 4, 3, 5 };
-	sortingCheck(first, first);
 	cout << "-1 - exit\n0 - user\n1 - demonstration\n";
 	int massage;
 	cin >> massage;

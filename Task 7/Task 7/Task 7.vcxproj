@@ -115,6 +115,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Demonstration.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="RabinKarp.cpp" />
+    <ClCompile Include="RabinKarpCheck.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Demonstration.h" />
+    <ClInclude Include="RabinKarp.h" />
+    <ClInclude Include="RabinKarpCheck.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

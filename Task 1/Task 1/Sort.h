@@ -6,11 +6,11 @@
 #include <algorithm>
 #include <limits.h>
 #include <math.h>
+#include <fstream>
+#include <string>
 
 
 using namespace std;
 
 
-int getFibonacciNumber(int i, int p);
-
-void sort(vector<int> &first);
+void sort(string first);

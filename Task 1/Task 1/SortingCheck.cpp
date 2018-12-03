@@ -1,21 +1,35 @@
 #include "SortingCheck.h"
 
 
-bool sortingCheck(vector<int> &first, vector<int> &second)
+bool sortingCheck(string first, string second)
 {
-	if (first.size() != second.size())
-	{
-		return false;
-	}
-
 	sort(first);
 
-	for (int i = 0; i < int(first.size()); ++i)
+	ifstream fileIn0(first),
+		fileIn1(second);
+
+	int firstNumber,
+		secondNumber;
+
+	fileIn0 >> firstNumber;
+	fileIn1 >> secondNumber;
+
+	for (int i = 0; i < firstNumber; ++i)
 	{
-		if (first[i] != second[i])
+		int firstValue,
+			secondValue;
+		
+		fileIn0 >> firstValue;
+		fileIn1 >> secondValue;
+
+		if (firstValue != secondValue)
 		{
+			fileIn0.close();
+			fileIn1.close();
 			return false;
 		}
 	}
+	fileIn0.close();
+	fileIn1.close();
 	return true;
 }
